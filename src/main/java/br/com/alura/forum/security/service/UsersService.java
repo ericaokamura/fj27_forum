@@ -23,6 +23,12 @@ public class UsersService implements UserDetailsService {
 		return possibleUser.orElseThrow(() ->
 			new UsernameNotFoundException("Usuário não encontrado."));
 	}
+
+	public UserDetails loadUserById(Long id) throws UsernameNotFoundException {
+		Optional<User> possibleUser = userRepository.findById(id);
+		return possibleUser.orElseThrow(() ->
+			new UsernameNotFoundException("Usuário não encontrado."));
+	}
 	
 
 }

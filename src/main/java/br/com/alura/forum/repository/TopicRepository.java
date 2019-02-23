@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
+import br.com.alura.forum.controller.dto.input.NewTopicInputDto;
 import br.com.alura.forum.model.topic.domain.Topic;
 import br.com.alura.forum.model.topic.domain.TopicStatus;
 
@@ -29,4 +30,6 @@ public interface TopicRepository extends Repository<Topic, Long>, JpaSpecificati
 	public List<Topic> listaPorCategoriaEStatus(@Param("categoria") String categoria, @Param("status")TopicStatus status);
 	
 	public Page<Topic> findAll(Specification<Topic> topicSearchSpecification, Pageable pageable);
+
+	public void save(Topic topic);
 }
