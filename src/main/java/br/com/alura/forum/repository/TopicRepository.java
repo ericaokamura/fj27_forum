@@ -12,6 +12,7 @@ import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
 import br.com.alura.forum.controller.dto.input.NewTopicInputDto;
+import br.com.alura.forum.model.User;
 import br.com.alura.forum.model.topic.domain.Topic;
 import br.com.alura.forum.model.topic.domain.TopicStatus;
 
@@ -32,4 +33,6 @@ public interface TopicRepository extends Repository<Topic, Long>, JpaSpecificati
 	public Page<Topic> findAll(Specification<Topic> topicSearchSpecification, Pageable pageable);
 
 	public void save(Topic topic);
+
+	public List<Topic> findByOwnerAndCreationInstantAfterOrderByCreationInstantAsc(User loggedUser, Instant oneHourAgo);
 }
